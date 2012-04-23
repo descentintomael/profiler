@@ -45,6 +45,10 @@ class Profiler
          .collect{|f| f[Profiler::Data.profile_directory_path(p_name)..f.size]}
     end
     
+    def self.list_profiles
+      profiles = Dir.glob(File.join(PROFILE_DIR, '*')).delete_if{ |f| File.file? f }
+    end
+    
     #################
     ## FILE MOVING
     #################
