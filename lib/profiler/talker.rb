@@ -3,26 +3,26 @@ module Profiler
     @@verbose = false
     @@quiet = false
     
-    def say(msg)
+    def self.say(msg)
       # Output unless quiet is true
       puts msg unless @@quiet
     end
     
-    def whisper(msg)
+    def self.whisper(msg)
       # Output only if verbose is true
       puts msg if @@verbose
     end
     
-    def yell(msg)
+    def self.yell(msg)
       # Output regardless of verbosity chosen
       puts msg
     end
     
-    def verbose=(val)
+    def self.verbose=(val)
       @@verbose = val
     end
     
-    def quiet=(val)
+    def self.quiet=(val)
       @@quiet = val
     end
   end
