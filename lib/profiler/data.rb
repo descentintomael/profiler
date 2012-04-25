@@ -1,5 +1,5 @@
 require 'FileUtils'
-class Profiler
+module Profiler
   # Handles the data portion of the functionality
   class Data
     
