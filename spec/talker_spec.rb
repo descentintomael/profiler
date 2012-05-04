@@ -84,8 +84,8 @@ describe Profiler::Talker do
   
   it "should indent" do
     Profiler::Talker.indent
-    Profiler::Talker.yell("Hello, world!\nAnd goodbye.")
-    @output.string.rstrip.should == "\tHello, world!\n\tAnd goodbye."
+    Profiler::Talker.yell("Hello, world!")
+    @output.string.rstrip.should == "\tHello, world!"
   end
   
   it "should dedent" do
@@ -93,7 +93,7 @@ describe Profiler::Talker do
     Profiler::Talker.indent
     Profiler::Talker.indent
     Profiler::Talker.dedent
-    Profiler::Talker.yell("Hello, world!\nAnd goodbye.")
-    @output.string.rstrip.should == "\tHello, world!\n\tAnd goodbye."
+    Profiler::Talker.yell("Hello, world!")
+    @output.string.rstrip.should == "\tHello, world!"
   end
 end

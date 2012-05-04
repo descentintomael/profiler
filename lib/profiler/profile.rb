@@ -12,9 +12,9 @@ module Profiler
       # Create the profile directory (won't do anything if it already exists)
       Profiler::Data.create_profile_directory(p_name)
 
-      Profiler::Scm.changed_files.each do |f|
+      Profiler::Scm.changed_files.each do |relative_path|
         Profiler::Talker.whisper "Adding file #{relative_path} to profile #{p_name}"
-        Profiler::Data.copy_to_profile(p_name, f)
+        Profiler::Data.copy_to_profile(p_name, relative_path)
       end
     end
 

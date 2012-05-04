@@ -1,5 +1,9 @@
 require 'trollop'
 require 'fileutils'
+require 'profiler/data'
+require 'profiler/profile'
+require 'profiler/talker'
+require 'scm/scm'
 
 module Profiler
   DATA_DIR = File.expand_path("~#{ENV['USER']}/.ds/")
@@ -76,15 +80,15 @@ module Profiler
         files = Profiler::Data.profile_files(p_name)
         Profiler::Talker.say "Files for #{p_name}"
         Profiler::Talker.indent
-        Profiler::Talker.say files.join('\n')
+        files.each {|f| Profiler::Talker.say f }
         Profiler::Talker.dedent
       end
     elsif opts[:list_all]
       profiles = Profiler::Data.list_profiles
-      Profiler::Talker.say profiles.join('\n')
+      profiles.each {|p| Profiler::Talker.say p}
     elsif opts[:list]
       profiles = Profiler::Data.current_profiles
-      Profiler::Talker.say profiles.join('\n')
+      profiles.each {|p| Profiler::Talker.say p}
     elsif opts[:diff]
       Profiler::Data.diff(opts[:profiles])
     else

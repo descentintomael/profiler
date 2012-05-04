@@ -58,7 +58,7 @@ module Profiler
     
     # TODO: this needs a better name
     def self.msg_indent(msg)
-      ("\t" * @@indent_count) + msg.split("\n").join("\n" + ("\t" * @@indent_count))
+      ("\t" * @@indent_count) + msg
     end
   end
 end

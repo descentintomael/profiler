@@ -56,7 +56,7 @@ describe Profiler do
       args = "--list-all".shellsplit
       
       Profiler::Data.should_receive(:list_profiles).and_return(profiles)
-      Profiler::Talker.should_receive(:say).with(profiles.join('\n'))
+      profiles.each {|p| Profiler::Talker.should_receive(:say).with(p) }
       Profiler::run(args)
     end
     
@@ -65,7 +65,7 @@ describe Profiler do
       args = "--list".shellsplit
       
       Profiler::Data.should_receive(:current_profiles).and_return(profiles)
-      Profiler::Talker.should_receive(:say).with(profiles.join('\n'))
+      profiles.each {|p| Profiler::Talker.should_receive(:say).with(p) }
       Profiler::run(args)
     end
   end
